@@ -36,7 +36,7 @@
         </div>
       </div>
       <div>
-        <a class="main-down" href="#portfolio"><i class="icon-down"></i></a>
+        <a class="main-down slowly" href="#portfolio"><i class="icon-down"></i></a>
       </div>
     </div>
 
@@ -168,5 +168,26 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+
+<!-- Плавная прокрутка -->
+<script>
+$(document).ready(function () {
+$(".slowly").on("click",function(event) {
+  //отменяем стандартную обработку нажатия по ссылке
+  event.preventDefault();
+
+  //забираем идентификатор блока с атрибута href
+  var id=$(this).attr('href'),
+
+  //узнаём высоту от начала страницы до слока, на который ссылается якорь
+    top =$(id).offset().top;
+
+  //анимируем переход на расстояние - top за 800мс
+  $('body,html').animate({scrollTop:top}, 800);
+});
+});
+</script>
+
   </body>
 </html>
